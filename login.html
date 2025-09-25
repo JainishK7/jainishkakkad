@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+<head><title>Login</title></head>
+<body>
+<section layout:fragment="content" class="auth-card">
+    <h2>Sign in</h2>
+    <form method="post" th:action="@{/login}">
+        <label>Username <input type="text" name="username" autocomplete="username" required></label>
+        <label>Password <input type="password" name="password" autocomplete="current-password" required></label>
+        <button type="submit" class="btn primary">Login</button>
+    </form>
+</section>
+</body>
+</html>

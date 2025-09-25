@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>EduTracker</title>
+    <link rel="icon" th:href="@{/images/logo.svg}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<header class="et-header">
+    <div class="brand-wrap">
+        <img class="logo" th:src="@{/images/logo.svg}" alt="EduTracker" width="28" height="28">
+        <a th:href="@{/}" class="brand">EduTracker</a>
+    </div>
+    <nav class="et-nav">
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/activities}">My Activities</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+</header>
+<main class="et-main" layout:fragment="content">Content</main>
+<footer class="et-footer">
+    <span>&copy; 2025 EduTracker</span>
+</footer>
+<link rel="stylesheet" th:href="@{/style.css}">
+<script defer th:src="@{/app.js}"></script>
+</body>
+</html>

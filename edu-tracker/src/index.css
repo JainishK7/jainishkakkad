@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small local helpers to match spacing & layout used in the App */
+html, body, #root {
+    height: 100%;
+}
+body {
+    background-color: #F3F4F6; /* gray-100 */
+}

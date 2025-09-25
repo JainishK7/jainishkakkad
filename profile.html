@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Company Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container py-4">
+    <h3>Organization Profile</h3>
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input class="form-control" name="name" th:value="${company.name}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" name="email" th:value="${company.email}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Website</label>
+            <input class="form-control" name="website" th:value="${company.website}">
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

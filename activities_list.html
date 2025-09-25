@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Activities</title>
+    <link href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container py-4">
+    <div class="d-flex justify-content-between mb-3">
+        <h3>My Activities</h3>
+        <a class="btn btn-primary" th:href="@{/student/activities/new}">Add Activity</a>
+    </div>
+    <div class="list-group">
+        <a th:each="a : ${page.content}" class="list-group-item list-group-item-action" th:href="@{|/activity/${a.id}|}">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text="${a.title}">Title</h5>
+                <small th:text="${a.status}">STATUS</small>
+            </div>
+            <p class="mb-1" th:text="${a.description}">Desc</p>
+            <small th:text="${a.type}">TYPE</small>
+        </a>
+    </div>
+    <nav class="mt-3">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${page.first} ? 'disabled'">
+                <a class="page-link" th:href="@{|/student/activities?page=${page.number-1}|}">Prev</a>
+            </li>
+            <li class="page-item" th:classappend="${page.last} ? 'disabled'">
+                <a class="page-link" th:href="@{|/student/activities?page=${page.number+1}|}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

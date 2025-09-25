@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upload Evidence</title>
+    <link href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container py-4">
+    <h3>Upload Evidence</h3>
+    <div th:if="${message}" class="alert" th:classappend="${#strings.contains(message,'success')} ? ' alert-success' : ' alert-warning'" th:text="${message}">Message</div>
+    <form th:action="@{|/activities/${activityId}/upload|}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">Choose file</label>
+            <input class="form-control" type="file" name="file" required>
+            <div class="form-text">Allowed: PDF, JPG, JPEG, PNG, DOCX • Max 25 MB per file • Total 50 MB per activity.</div>
+        </div>
+        <button class="btn btn-primary" type="submit">Upload</button>
+        <a class="btn btn-link" th:href="@{|/activity/${activityId}|}">Back to activity</a>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

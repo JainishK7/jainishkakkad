@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Activity</title>
+    <link href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container py-4">
+    <h3 th:text="${activity.id} == null ? 'New Activity' : 'Edit Activity'">Activity</h3>
+    <form th:action="${activity.id} == null ? @{/student/activities} : @{'/student/activities/' + ${activity.id}}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="studentId" value="1"/>
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input class="form-control" name="title" th:value="${activity.title}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Type</label>
+            <select class="form-select" name="type">
+                <option th:each="t : ${types}" th:value="${t}" th:text="${t}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Organization</label>
+            <input class="form-control" name="organization" th:value="${activity.organization}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="description" rows="3" th:text="${activity.description}"></textarea>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Start date</label>
+                <input class="form-control" type="date" name="startDate" th:value="${activity.startDate}">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">End date</label>
+                <input class="form-control" type="date" name="endDate" th:value="${activity.endDate}">
+            </div>
+        </div>
+        <div class="row g-3 mt-2">
+            <div class="col-md-6">
+                <label class="form-label">Hours</label>
+                <input class="form-control" type="number" name="hours" th:value="${activity.hours}">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Credits</label>
+                <input class="form-control" type="number" name="credits" th:value="${activity.credits}">
+            </div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Certificates/Evidence</label>
+            <input class="form-control" type="file" name="files" multiple>
+            <div class="form-text">PDF/JPG/PNG/DOCX up to 25 MB each.</div>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a class="btn btn-link" href="/student/activities">Cancel</a>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

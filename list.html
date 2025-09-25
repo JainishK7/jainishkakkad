@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+<head><title>My Activities</title></head>
+<body>
+<section layout:fragment="content">
+    <h2>My Activities</h2>
+    <p>No activities yet.</p>
+    <a class="btn" th:href="@{/activities/new}">Add Activity</a>
+</section>
+</body>
+</html>

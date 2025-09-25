@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Department Verifiers</title>
+    <link href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container py-4">
+    <h3>Manage Faculty Verifiers</h3>
+    <table class="table table-striped">
+        <thead><tr><th>Name</th><th>Email</th><th>Actions</th></tr></thead>
+        <tbody>
+        <tr th:each="u : ${faculty}">
+            <td th:text="${u.fullName}">Name</td>
+            <td th:text="${u.email}">email</td>
+            <td>
+                <form th:action="@{|/dept/verifiers/${u.id}/assign|}" method="post">
+                    <button class="btn btn-sm btn-outline-primary" type="submit">Assign as Verifier</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

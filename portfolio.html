@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${student.user.fullName} + ' — Portfolio'">Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .badge-verify { font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3 th:text="${student.user.fullName}">Student Name</h3>
+        <div>
+            <a class="btn btn-outline-primary me-2" th:href="@{|/portfolio/${student.id}/pdf|}">Download PDF</a>
+        </div>
+    </div>
+    <p class="text-muted mb-4">
+        Program: <span th:text="${student.program}">Program</span> • Batch: <span th:text="${student.batchYear}">Year</span> • Credits: <span th:text="${student.credits}">0</span>
+    </p>
+
+    <div class="list-group">
+        <div th:each="a : ${activities}" th:if="${a.status} == 'APPROVED'" class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text="${a.title}">Title</h5>
+                <small>
+                    <span class="badge text-bg-success badge-verify" th:if="${a.verificationBadge != null}" th:text="${a.verificationBadge}">GOLD</span>
+                    <span class="badge text-bg-secondary" th:text="${a.type}">TYPE</span>
+                </small>
+            </div>
+            <p class="mb-1" th:text="${a.description}">Description</p>
+            <small th:text="${#temporals.format(a.startDate, 'dd MMM yyyy')} + ' - ' + ${#temporals.format(a.endDate, 'dd MMM yyyy')}">Dates</small>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div class="text-muted small">
+        This portfolio includes only verified items. A verification QR/URL may appear on the PDF for live status and audit log.
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+package com.edutracker.activity;
+
+public enum ActivityType {
+    CONFERENCE, WORKSHOP, CERTIFICATION, CLUB, VOLUNTEERING, COMPETITION, LEADERSHIP, INTERNSHIP, COMMUNITY_SERVICE
+}
